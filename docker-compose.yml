@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  rabbitmq3:
+    container_name: "rabbitmq"
+    image: rabbitmq:3.12.0-management-alpine
+    environment:
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=password
+    ports:
+      # AMQP protocol port
+      - '5672:5672'
+      # HTTP management UI
+      - '15672:15672'
+  postgres:
+    container_name: "postgres"
+    image: postgres:14.4-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: root
+      PGUSER: root
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: db
